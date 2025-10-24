@@ -1,35 +1,40 @@
 {
-  "name": "@pipobscure/biome",
-  "version": "1.0.0",
-  "description": "biomejs config and forward",
-  "files": [
-    "biome.json"
-  ],
-  "keywords": [
-    "biomejs",
-    "config"
-  ],
-  "homepage": "https://github.com/pipobscure/biome#readme",
-  "bugs": {
-    "url": "https://github.com/pipobscure/biome/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pipobscure/biome.git"
-  },
-  "license": "ISC",
-  "author": "Philipp Dunkel <pip@pipobscure.com>",
-  "type": "module",
-  "export": "biome.json",
-  "scripts": {
-    "postversion": "npm publish --access=public",
-    "postpublish": "git push --follow-tags"
-  },
-  "bin": "biome",
-  "dependencies": {
-    "@biomejs/biome": "2.2.4"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com"
-  }
+	"name": "@pipobscure/biome",
+	"version": "1.0.0",
+	"description": "biomejs config and forward",
+	"type": "module",
+	"exports": "./biome.js",
+	"files": [
+		"biome",
+		"biome.json"
+	],
+	"keywords": [
+		"biomejs",
+		"config"
+	],
+	"homepage": "https://github.com/pipobscure/biome#readme",
+	"bugs": {
+		"url": "https://github.com/pipobscure/biome/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pipobscure/biome.git"
+	},
+	"license": "ISC",
+	"author": "Philipp Dunkel <pip@pipobscure.com>",
+	"scripts": {
+		"test": "exit 0",
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"postversion": "git push --follow-tags"
+	},
+	"bin": {
+		"pipobscure.biome": "biome.js"
+	},
+	"dependencies": {
+		"@biomejs/biome": "2.3.0"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.com"
+	}
 }

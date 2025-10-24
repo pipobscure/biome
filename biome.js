@@ -1,0 +1,35 @@
+#!/usr/bin/env -S node --no-warnings
+
+import * as FS from 'node:fs/promises';
+import * as Path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+export default async function main() {
+	const biome = import.meta.resolve('@biomejs/biome/bin/biome');
+	switch (process.argv[2]) {
+		case 'init': {
+			const config = fileURLToPath(new URL('./biome.json', import.meta.url));
+			let biome = {};
+			try {
+				biome = JSON.parse(await FS.readFile('./biome.json', 'utf-8'));
+			} catch {}
+			await FS.writeFile(
+				'./biome.json',
+				JSON.stringify(
+					Object.fromEntries([
+						['$schema', 'https://biomejs.dev/schemas/2.2.4/schema.json'],
+						['extends', Array.from(new Set([...(biome.extends ?? []), Path.relative('./', config)]))],
+						['linter', biome.linter],
+					]),
+					undefined,
+					'\t',
+				),
+			);
+			break;
+		}
+		default:
+			await import(biome);
+	}
+}
+
+if (import.meta.main) main().catch((err) => console.error(err));
