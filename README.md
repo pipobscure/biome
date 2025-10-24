@@ -5,3 +5,4 @@ To init in a project simply run `npm exec @pipobscure/biome init` after installi
 which will modify/create a `biome.json` file.
 
 After that use biome as normally.
+
