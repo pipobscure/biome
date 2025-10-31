@@ -20,7 +20,7 @@
 		"type": "git",
 		"url": "git+https://github.com/pipobscure/biome.git"
 	},
-	"license": "ISC",
+	"license": "EUPL-1.2",
 	"author": "Philipp Dunkel <pip@pipobscure.com>",
 	"scripts": {
 		"test": "exit 0",
